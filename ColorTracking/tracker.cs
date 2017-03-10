@@ -84,7 +84,7 @@ namespace ColorTracking
             Bitmap objectsImage = null;
             Bitmap mImage = null;
             mImage=(Bitmap)image.Clone();            
-            filter.CenterColor = Color.FromArgb(color.ToArgb());
+            filter.CenterColor = new RGB(Color.FromArgb(color.ToArgb()));
             filter.Radius =(short)range;
            
             objectsImage = image;
@@ -97,7 +97,7 @@ namespace ColorTracking
 
             
             blobCounter.ProcessImage(grayImage);
-            Rectangle[] rects = blobCounter.GetObjectRectangles();
+            Rectangle[] rects = blobCounter.GetObjectsRectangles();
            
             if (rects.Length > 0)
             {
@@ -122,7 +122,7 @@ namespace ColorTracking
       
                 
                   // set center colol and radius
-                  filter.CenterColor = Color.FromArgb(color.ToArgb());
+                  filter.CenterColor = new RGB(Color.FromArgb(color.ToArgb()));
                   filter.Radius = (short)range;
                   // apply the filter
                   objectsImage = image;
@@ -140,7 +140,7 @@ namespace ColorTracking
 
             // locate blobs 
             blobCounter.ProcessImage(grayImage);
-            Rectangle[] rects = blobCounter.GetObjectRectangles();
+            Rectangle[] rects = blobCounter.GetObjectsRectangles();
           
             if (rects.Length > 0)
             {
